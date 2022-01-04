@@ -18,16 +18,16 @@ class CSV_Parser:
         business_roles = []
         users = []
 
-        for k in range(1, table.shape[1]):
-            business_roles = np.append(business_roles, table[0, k])
+        for every_business_role in range(1, table.shape[1]):
+            business_roles = np.append(business_roles, table[0, every_business_role])
 
-        for l in range(1, table.shape[0]):
-            users = np.append(users, table[l, 0])
+        for every_user in range(1, table.shape[0]):
+            users = np.append(users, table[every_user, 0])
 
-        for z in range(0,len(users)+1):
-            for i in range(1, len(business_roles) + 1):
-                if table[z, i] == 'x':
-                    output_string = str(users[z - 1]) + ',' + str(business_roles[i - 1]) + '\n'
+        for iter_in_every_user in range(0,len(users)+1):
+            for iter_in_every_business_role in range(1, len(business_roles) + 1):
+                if table[iter_in_every_user, iter_in_every_business_role] == 'x':
+                    output_string = str(users[iter_in_every_user - 1]) + ',' + str(business_roles[iter_in_every_business_role - 1]) + '\n'
                     self.save_as_csv(output_string, 'PARSED_CSV.csv')
 
     def save_as_csv(self, input_text, file_name):
